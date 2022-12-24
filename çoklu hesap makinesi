@@ -1,0 +1,256 @@
+#include<stdio.h>
+#include <stdlib.h>
+#include <math.h>
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+int sayi1,sayi1_2,sayi1_1,top1,top2,karmasik1,karmasik2,carp1,carp2,a,b,c,s,yaricap,kenar1,kenar2,sayi1_3;  
+
+// Burada tam sayı olan değişken türlenini tanımladım. Sayi1 değişkeni kullanıcıdan hesap makinesinde yapmak istediği işlemleri almak için tanımladığım değişkendir.
+
+//sayi1_1 , sayi1_2 ve sayi1_3 kullanıcı hesap makinesinde seçtiği işlemlerin alt başlıklarını seçtiği durumda kullandığım değişkenlerdir.
+
+//top1 kullanıcıdan toplama için gerekli 1. sayıyı aldığım değişken , top2 kullanıcıdan toplama için gerekli 2. sayıyı aldığım değişkendir. 
+
+// carp1 kullanıcı çarpma işlemini seçtiyse çarpma işlemi için gerekli 1. sayıyı aldığım değişken , carp2 de çarpma için gerekli aldığım 2. sayıyı aldığım değişkendir.
+
+// karmasik1 ve karmasik 2 degiskenleri ise kullanıcı karmasik sayi hesaplanmasını isterse aldığım ve hesaplama yaptığım değişkenlerdir.
+
+// kullanıcı eğer hesap makinesinde 2. işlemi seçerse alan,cevre hesaplayıcıya gider. Eğer üçgeni seçerse devreye a,b,c ve s değişkenleri girer.
+// a üçgenin 1. kenar uzunluğu , b üçgenin ikinci kenar uzunluğu , c üçgenin 3. kenar uzunluğu , s ise üçgenin kenarları toplamının 2 sayısına bölümüdür. s değişkenini alanda kullanacağım.
+
+// yaricap değişkeni kullanıcı geometrik şekil olarak daireyi seçerse hesaplamalar için ihtiyacım olan değişkendir.
+
+// kenar1 ve kenar2 , kullanıcı eğer dikdörtgeni seçerse hesaplamalar için kullaacağım ve sayıları bunlarla aalacağım değişkendir. 
+
+
+
+float fahrenheit,kelvin;  // fahrenheit ve kelvin hesaplanma kısmında virgüle sahip sayılar olduğundan ve kendileri de kullanıcıdan virgüllü alınabileceğinden float tanımladım.
+
+int toplam(top1,top2){  // Bu kısımda toplama işlemini tanımladım ve formülünü girdim. Aşağıda ihtiyacım olunca global olduğu için çağırcağım.
+	
+	
+ return top1 + top2;
+ 
+ 
+}
+
+int toplami(karmasik1,karmasik2){ // karmasik sayilarin toplanmasi işlemi.
+	
+	return karmasik1+karmasik2;
+}
+
+int carpmareel(top1,top2,karmasik1,karmasik2){ // karmasik sayilarda carpma işlemi.
+	
+	return (top1*top2) - (karmasik1,karmasik2);
+	
+}
+
+
+int carpmai(top1,top2,karmasik1,karmasik2){ // karmasik sayilarin caprpılmasi işlemi.
+
+
+   return (top1*karmasik2) + (top2*karmasik1);
+	
+}
+
+int carpma(carp1,carp2){ // Burada çarpma işleminin formülünü tanımladım.
+	
+	return carp1*carp2;
+}
+ 
+ float cevre(a,b,c){ // Ucgenin cevresinin formülünü tanımladığım kısım...
+ 	
+ 	return (a+b+c);
+ }
+
+float alan_area(a,b,c,s){ // area fonksiyonu ve kullanıcıdan aldığım değişkenleri kullanarak üçgenin alan formülünü tanımladım.
+	 
+	s = (a+b+c)/2;
+	return sqrt(s*(s-a)*(s-b)*(s-c));
+}
+
+float d_alan(yaricap){ // dairenin alanı formülü...
+	
+     return 3.14*yaricap*yaricap;
+}
+
+float d_cevre(yaricap){ // dairenin cevresi formülü...
+	
+	return 2*3.14*yaricap;
+}
+
+int dikcevre(kenar1,kenar2){ // dikdörtgenin cevre formülüdür.
+	
+	return (2*kenar1)+(2*kenar2);
+	
+}
+
+int dikalan(kenar1,kenar2){ // dikdörtgenin alan formülüdür.
+	
+	return (kenar1)*(kenar2);
+}
+
+float fahrenheitt( float kelvin){ // kullanıcıdan alınan kelvin değerini fahrenheit değerine dönüştürmek için kullandığım formüldür.
+	
+	return ((9.0/5.0)*(kelvin-273.15))+32.0;
+}
+
+float kelvinn(float fahrenheit){
+	
+	return (((5.0/9.0)*(fahrenheit-32.0))+273.15); // kullanıcıdan alınan fahrenheit değerini kelvin değerine dönüştürmek için kullandığım formüldür.
+	
+}
+
+// !!! Yukarıda tanımladığım tüm değişkenler global değişkendir.Bu programın her alanında tanımlı olacaktır!!!
+// !!! Yukarıda tanımladığım tüm formüller globaldir.Fonksiyonların içinde tanımladır ve ihtiyacım olduğunda aşağıya çağırabileceğim.
+
+
+
+int main(int argc, char *argv[]) {
+	
+	printf("LUTFEN BIR ISLEM SECINIZ: \n 1--> STANDART HESAP MAKINESI \n 2--> ALAN,CEVRE HESAPLAYICI \n 3--> SICAKLIK HESAPLAYICI \n *** ");
+	scanf("%d",&sayi1);
+	
+	// Burada kullanıcıdan hesap makinesinin içinden işlem seçmesini sağladım.
+	
+	switch(sayi1)
+	{
+		case 1: printf("Sectiginiz islem : STANDART HESAP MAKINESI\n\n"); break ;
+		case 2: printf("Sectiginiz islem : ALAN,CEVRE HESAPLAYICI\n\n"); break ;
+		case 3: printf("Sectiginiz islem : SICAKLIK HESAPLAYICI\n\n"); break ;
+	}
+	   
+	// switch-case ile kullanıcının girdiği sayıya bağlı olarak seçtiği işlemi ekrana yazdırdım.   
+	   
+	if(sayi1==1) // eğer kullanıcı standart hesap makinesini seçerse aşağıdaki işlemler başlar.
+	{
+		
+		printf("Lutfen bir islem seciniz: \n 1--> TOPLAMA \n 2--> CARPMA \n 3--> KARMASIK SAYILARDA TOPLAMA VE CARPMA \n ***"); // toplama veya carpma işlemini seçmesi için seçenek sundum.
+		scanf("%d",&sayi1_1);
+		
+		if(sayi1_1==1) // toplamayı seçerse 1. ve 2. sayıyı alacağım.
+		{
+		
+		printf("lutfen 1. sayiyi giriniz: --> ");
+		scanf("%d",&top1);
+		
+		printf("lutfen 2. sayiyi giriniz: --> ");
+		scanf("%d",&top2);
+		
+		printf("%d",toplam(top1,top2)); // sayıları aldıktan sonra yukarda toplama işleminin formülünü tanımladığım fonksiyonu çağırıp işlemi yaptırdım ve sonucunu ekrana yazdırdım.
+		
+		}
+		  
+		  
+		else if(sayi1_1==2) // eğer kullanıcı çarpma işlemini  seçerse sayıları çarpılacak sayıları aldım.
+		{
+			printf("lutfen 1. sayiyi giriniz: --> ");
+			scanf("%d",&carp1);
+			
+			printf("lutfen 2. sayiyi giriniz: --> ");
+		    scanf("%d",&carp2);
+			
+			printf("%d",carpma(carp1,carp2)); // aldığım sayıları yukarda işlemini tanımladığım fonksiyonu çağırarak çarptırıp sonucu ekrana yazdırdım.
+			
+	     }
+			
+		else if(sayi1_1==3) // kullanıcı karmasik sayilarin hesaplanmasını isterse bu programı bu kısma yönlendirir.
+		{
+			
+			printf("lutfen 1. karmasik sayinin reel ve imajiner kismini aralarinda bosluk birakarak giriniz: -->"); // kullanıcıdan karmasik sayiların değerlerini aldım.
+			scanf("%d %d",&top1,&karmasik1);
+			
+			printf("lutfen 2. karmasik sayinin reel ve imajiner kismini aralarında bosluk birakarak giriniz: -->");
+			scanf("%d %d",&top2,&karmasik2);
+			
+			printf("girdiginiz karmasik sayilarin toplami = %d+%di\n",toplam(top1,top2),toplami(karmasik1,karmasik2));
+			 // karmasik sayilarin toplama ve carpma sonucunu hesaplayıp yazdırması için // yukarıda global tanımladığım toplama ve carpma islemlerinin formüllerinin
+	         // bulunduğu fonksiyonları cağırdım.
+	         
+	         printf("giridiginiz karmasik sayilarin caprimi = %d+%di",carpmareel(top1,top2,karmasik1,karmasik2),carpmai(top1,top2,karmasik1,karmasik2)); 
+		}
+		
+			
+	}
+
+	else if(sayi1==2)  // kullanıcı 2 sayısını girerse aşağıdaki işlemler olur.
+	{
+		printf("Sectiginiz islem = ALAN,CEVRE HESPLAYICI \n");  // alan,cevre hesaplayıcısını seçtiğini ekrana yazdırdım.
+		
+		printf("Lutfen alanini ve cevresini hesaplamak istediginiz geometrik sekli seciniz: \n --> 1=UCGEN \n --> 2=DAIRE \n --> 3=DIKDORTGEN \n");
+		scanf("%d",&sayi1_2);
+		
+		// hangi geometrik işlemi seçmek istedğine dair seçenekler sundum.
+		 
+		if(sayi1_2==1) // eğer üçgen seçerse kenar uzunluklarını hesaplamak üzere kullanıcıdan aldım.
+		{
+			printf("Lutfen ucgenin 1. kenar uzunlugunu giriniz: ");
+			scanf("%d",&a);
+			
+			printf("Lutfen ucgenin 2. kenar uzunlugunu giriniz: ");
+			scanf("%d",&b);
+			
+			printf("Lutfen ucgenin 3. kenar uzunlugunu giriniz: ");
+			scanf("%d",&c);
+			
+			printf("ucgenin cevresi %2.f 'dir.\n",cevre(a,b,c)); // cevresini yukarıda tanımladığım fonksiyonla ekrana yazdırdım.
+			
+			printf("ucgenin alani %f'dir.", alan_area(a,b,c,s)); // alanını yukarıda tanımladığım fonksiyonu çağırıp ekrana yazdırdım.
+			
+		}
+		
+		 else if(sayi1_2==2)  // kullanıcı daire şeklini seçerse aşağıdaki işlemler gerçekleşir.
+		 {
+		 printf("Lutfen dairenin yaricapini giriniz: "); // dairenin yarıçapını aldım.
+		 scanf("%d",&yaricap);
+		  
+		 printf("dairenin alani: %f\n",d_alan(yaricap)); // alanını yukarıda tanımladığım fonksiyonu cağrıp ekrana yazdırdım.
+         printf("dairenin cevresi: %f", d_cevre(yaricap));	 // cevreyi de yukarıda tanımladığım fonksiyonla ekrana yazdırdım.
+		 }
+		 
+		 else if(sayi1_2==3) // kullanıcı dikdörtgeni seçerse aşağıdakiler gerçekleşir.
+		 {
+		 	printf("Lutfen dikdortgenin 1. kenarini giriniz: "); // kenar uzunluklarını aldım.
+		 	scanf("%d",&kenar1);
+		 	
+		 	printf("Lutfen dikdortgenin 2. kenarini giriniz: ");
+		 	scanf("%d",&kenar2);
+		 	
+		    printf("Dikdortgenin cevresi: %d\n",dikcevre(kenar1,kenar2)); // cevresini yukarıda tanımlaığım fonksiyona hesaplattım ve bu fonksiyonu çağırıp ekrana sonucu yazdırdım.
+		    printf("Dikdortgenin alani: %d",dikalan(kenar1,kenar2)); // alanını yukarıda tanımlaığım fonksiyona hesaplattım ve bu fonksiyonu çağırıp ekrana sonucu yazdırdım.
+		 	
+		 
+		 }
+	}
+		 else if(sayi1==3) // kullanıcı eğer sıcaklık hesaplayıcıyı seçerse aşağıdaki işlemler gerçekleşir.
+		 {
+		 	printf("Lutfen bir donusum seciniz: \n***1=fahrenheiti kelvine donusturmek***\n***2=kelvini fahrenheite donusturmek***\n-->");
+		 	scanf("%d",&sayi1_3); // önce işlem seçmesi için seçenek sundum.
+		 	 
+		 	  
+		    if(sayi1_3==1) // eğer fahrenheiti kelvine cevirmek isterse aşağıdakiler olur.
+		    {
+		    	printf("Lutfen sicakligin fahrenheit degerini giriniz: "); // fahrenheit değerini aldım.
+		    	scanf("%f",&fahrenheit);
+		    	
+		    	printf("Girdiginiz fahrenheit turunde olan sicakligin kelvin degeri : %f ",kelvinn(fahrenheit));
+		    	// yukarıda tanımladığım işleme göre hesaplama yapılır.Fonksiyonu cağırıp bunu ekrana yazdırırım.
+		    
+			}
+		 	
+		 	else if(sayi1_3==2) // eğer kelvini fahrenheite cevirmek isterse aşağıdakiler olur.
+		 	{
+		 		printf("Lutfen sicakligin kelvin degerini giriniz: "); // kelvin değerini alırım.
+		    	scanf("%f",&kelvin);
+		    	
+		 	   	printf ("Girdiginiz kelvin turunde olan sicakligin fahrenheit degeri : %f",fahrenheitt(kelvin));	
+		 	   	// yukarıda tanımladığım işleme göre hesaplama yapılır.Fonksiyonu cağırıp bunu ekrana yazdırırım.
+			}
+		 	
+		 }
+		 
+		 
+	return 0;	 
+		 
+	}
+	
